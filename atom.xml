@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-16T01:35:16.970Z</updated>
+  <updated>2020-05-16T02:33:14.125Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2020/05/16/MySQL/"/>
     <id>http://yoursite.com/2020/05/16/MySQL/</id>
     <published>2020-05-16T01:10:20.000Z</published>
-    <updated>2020-05-16T01:35:16.970Z</updated>
+    <updated>2020-05-16T02:33:14.125Z</updated>
     
     <summary type="html">
     
@@ -31,6 +31,8 @@
     
     
       <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
     
     
       <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>

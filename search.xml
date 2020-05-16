@@ -17,6 +17,7 @@
 <h4 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rename table 旧表名 to 新表名</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>数据库</category>
+        <category>MySQL</category>
       </categories>
       <tags>
         <tag>MySQL</tag>
