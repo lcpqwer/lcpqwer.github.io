@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"8.0.0-rc.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="使用Python对网页数据进行抓取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python爬虫">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="小小迷途程序员">
+<meta property="og:description" content="使用Python对网页数据进行抓取">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-15T08:53:31.000Z">
+<meta property="article:modified_time" content="2020-05-15T09:56:40.732Z">
+<meta property="article:author" content="LCP">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="爬虫">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Python爬虫 | 小小迷途程序员</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="小小迷途程序员" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line toggle-line-first"></span>
+        <span class="toggle-line toggle-line-middle"></span>
+        <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">小小迷途程序员</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="LCP">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小小迷途程序员">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python爬虫
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-05-15 16:53:31 / 修改时间：17:56:40" itemprop="dateCreated datePublished" datetime="2020-05-15T16:53:31+08:00">2020-05-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
+                </span>
+            </span>
+
+          
+            <div class="post-description">使用Python对网页数据进行抓取</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">1、HTTP与HTTPS的区别</span><br><span class="line">    HTTP：我们称为超文本传输协议，主要用来实现从网络传输超文本到本地浏览器，实现高效且准确的超文本传送。目前HTTP的版本为1.1</span><br><span class="line">    HTTPS：我们认为就是以安全为目标的HTTP通道，即在HTTP协议的基础上加入了SSL层，简称HTTPS。</span><br><span class="line">    SSL的主要作用分为以下两部分：</span><br><span class="line">    第一、为HTTP传输文件提供安全的传输通道</span><br><span class="line">    第二、确认网站的真实性，通过HTTPS访问的网站都需要获取到CA认证。</span><br><span class="line"></span><br><span class="line">2、网络七层模型（了解）</span><br><span class="line">    从下到上的顺序</span><br><span class="line">    物理层</span><br><span class="line">    数据链路层</span><br><span class="line">    网络层</span><br><span class="line">    传输层（TCP、UDP）</span><br><span class="line">    会话层</span><br><span class="line">    表示层</span><br><span class="line">    应用层（HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP）</span><br><span class="line"></span><br><span class="line">3、HTTP的请求机制</span><br><span class="line">    第一，由客户端（浏览器）发出请求</span><br><span class="line">    第二，通过网络传输，到指定的服务器地址</span><br><span class="line">    第三，服务器接收相关请求，并进行解析</span><br><span class="line">    第四，服务器将最终的结果响应回客户端</span><br><span class="line">    第五，客户端接收到服务器响应后，通过浏览器解析，最终将内容进行展现</span><br><span class="line"></span><br><span class="line">4、客户端访问服务器，发出请求，有四部分构成</span><br><span class="line">    第一，请求方法（request method），默认为get方式。只有在表单提交和文件上传时为post方法。</span><br><span class="line">    第二，请求网址（request url），即在浏览器中输入的网路地址。</span><br><span class="line">    第三，请求头（request header），用来标识为一个浏览器正常的访问</span><br><span class="line">    第四，请求体（request body），用来传输到服务器端的相关数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5、请求方法中get与post的区别</span><br><span class="line">    第一、使用get方式提交请求时，相关数据会作为url的参数被一起进行提交，我们可以直接在地址栏中观察到相关数据。而采用post方式请求的url不会包含这些数据，而是直接通过表单提交到服务器。</span><br><span class="line">    第二、get方式提交请求，对于提交的数据大小不能大于1024字节，而post方式提交数据，没有大小的限制。</span><br><span class="line">    总之，如果提交的信息比较敏感或者字节较大时，需要使用post方式；如果只是普通的请求使用get方式。</span><br></pre></td></tr></table></figure>
+<h3 id="HTML网页结构"><a href="#HTML网页结构" class="headerlink" title="HTML网页结构"></a>HTML网页结构</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">1、HTML基本构成</span><br><span class="line">    HTML有三个标签来构成基本结构：</span><br><span class="line">    &lt;html&gt;:作为HTML文件的根标签，所有的页面中的标签和内容都要在HTML标签的范围内。</span><br><span class="line">    &lt;head&gt;：作为HTML文件的头部标签，相关页面的信息、编码、引导外部的CSS文件和JS文件，都需要放置在head标签中。</span><br><span class="line">    &lt;body&gt;：body标签中的内容，就是我们爬虫需要解析的主体。所有需要在页面上展现的内容，都会放置在该标签中。</span><br><span class="line"></span><br><span class="line">2、常见的HTML标签</span><br><span class="line">    1）h1...h6：标题标签，用来显示标题，h1最大，h6最小。</span><br><span class="line">    2）&lt;p&gt;：段落标签。用来对文本内容进行分段。</span><br><span class="line">    3）&lt;a&gt;：链接标签。用来跳转到指定的网址。</span><br><span class="line">    &lt;a target=<span class="string">''</span> href=<span class="string">'URL'</span>&gt;链接地址&lt;/a&gt;</span><br><span class="line">    其中参数target，_self:在自身的窗口重新打开指定的网址</span><br><span class="line">    _blank：在一个新窗口中打开指定的网址</span><br><span class="line"></span><br><span class="line">4）&lt;img&gt;：</span><br><span class="line">    图片标签。用来载入指定位置的图片，通常可以接收的图片类型：JPG、png、gif、bmp</span><br><span class="line">    &lt;img src=<span class="string">""</span> alt=<span class="string">""</span>&gt;</span><br><span class="line">    其中：src：指定图片的具体位置</span><br><span class="line">        alt：其中的内容，作为图片无法载入时，显示的内容。</span><br><span class="line"></span><br><span class="line">5）表格标签：table、tr、th、td</span><br><span class="line">    &lt;table&gt;：表格标签，所有表格中的行和单元格内容都必须放置在内部。</span><br><span class="line">    &lt;tr&gt;:表格行，代表表格一行</span><br><span class="line">    &lt;th&gt;:表格头，代表表格的标题行</span><br><span class="line">    &lt;td&gt;：表格单元格，代表表格中的每个单元内容</span><br><span class="line"></span><br><span class="line">6）列表</span><br><span class="line">有序列表：</span><br><span class="line">    &lt;ol&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ol&gt;</span><br><span class="line">无序列表:</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">自定义列表：</span><br><span class="line">    &lt;dl&gt;</span><br><span class="line">        &lt;dt&gt;</span><br><span class="line">            &lt;dd&gt;&lt;/dd&gt;</span><br><span class="line">        &lt;/dt&gt;</span><br><span class="line">    &lt;/dl&gt;</span><br><span class="line"></span><br><span class="line">7)div与span</span><br><span class="line">    div：块级元素，用来实现页面布局。自身没有任何效果</span><br><span class="line">    span:内联元素，用做文本容器。</span><br><span class="line"></span><br><span class="line">8）表单</span><br><span class="line">    &lt;form name=<span class="string">"表单名"</span> action=<span class="string">"URL"</span> method=<span class="string">"get/post"</span>&gt;</span><br><span class="line">    默认情况，如果没有声明method属性，缺省值为get</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">""</span>&gt;</span><br><span class="line">    输入标签，<span class="built_in">type</span>属性：</span><br><span class="line">    text:文本框</span><br><span class="line">    password：密码框</span><br><span class="line">    checkbox：复选框</span><br><span class="line">    radio：单选框</span><br><span class="line">    submit：提交按钮</span><br><span class="line">    reset：重置按钮</span><br><span class="line">    button：按钮</span><br><span class="line">    file:文件上传</span><br><span class="line">    &lt;textarea cols=<span class="string">"列数"</span> rows=<span class="string">"行数"</span>&gt;：文件区标签</span><br></pre></td></tr></table></figure>
+<h3 id="网络爬虫——urllib库"><a href="#网络爬虫——urllib库" class="headerlink" title="网络爬虫——urllib库"></a>网络爬虫——urllib库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">1、urllib库的基本使用</span><br><span class="line">    import urllib.request</span><br><span class="line">    函数格式：urllib.request.openurl(url, data, timeout)</span><br><span class="line">    参数说明：</span><br><span class="line">    url：指定的请求网址</span><br><span class="line">    data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。</span><br><span class="line">    timeout：指定连接url的超时时间，单位为秒。</span><br><span class="line">    response = urllib.request.openurl()函数返回一个HTTPResponse对象</span><br><span class="line">    我们可以使用response对象中的相关方法：</span><br><span class="line">    <span class="built_in">read</span>()读取响应体中的内容</span><br><span class="line">    status/getcode()返回响应码</span><br><span class="line">    reason 返回响应信息的内容</span><br><span class="line">    info()返回响应头信息</span><br><span class="line">    geturl()返回请求的url地址</span><br><span class="line"></span><br><span class="line">2、Request请求对象</span><br><span class="line">    req = urllib.request.Request(url,data,headers,method)</span><br><span class="line">    参数说明：</span><br><span class="line">    url：指定的请求网址</span><br><span class="line">    data：请求时提交给服务器端的数据，如果在openurl中使用了data参数，那么提交方式为post，默认情况下为get。</span><br><span class="line">    headers：请求对象的头信息，用来将一个爬虫伪装成一个普通的浏览器请求，主要设置user-agent</span><br><span class="line">    method：请求的方式，默认为get，可以设置为get或post</span><br><span class="line"></span><br><span class="line">3、urllib.error</span><br><span class="line">    在urllib库中有三个error对象</span><br><span class="line">    HTTPError：HTTP访问异常</span><br><span class="line">    URLError：url地址异常</span><br><span class="line">    ContentTooShortError：文件大小异常</span><br><span class="line">    注意，HTTPError是URLError的子类。</span><br><span class="line">    HTTPError，只有一个属性reason</span><br><span class="line">    URLError，有code，reason，headers三个属性。</span><br><span class="line"></span><br><span class="line">4、urllib.robotparser</span><br><span class="line">    作用：用来解析指定网站的robots.txt文件。用来分析哪些内容是允许抓取，哪些内容是不允许的。</span><br></pre></td></tr></table></figure>
+<h3 id="requests库"><a href="#requests库" class="headerlink" title="requests库"></a>requests库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">1）函数格式：requests.get(url,[param], **kvw)</span><br><span class="line">    参数说明:</span><br><span class="line">    url：指定爬取的网络地址</span><br><span class="line">    param：需要传递的参数，参数格式：字典或字节流</span><br><span class="line">    返回值：response对象</span><br><span class="line">    属性：</span><br><span class="line">    status_code:状态码</span><br><span class="line">    headers:头信息</span><br><span class="line">    text：抓取到的页面内容</span><br><span class="line">    encoding：页面的编码格式（从headers获取到）</span><br><span class="line">    apparent_encoding：页面的编码格式（从网页内容中获取到）</span><br><span class="line">    content：二进制形式的信息</span><br><span class="line">    注意：text属性返回的页面信息，是根据encoding来显示的。所以我们在使用requests抓取页面信息时，将encoding属性进行设置，通常设为utf-8。</span><br><span class="line"></span><br><span class="line">    get()函数代表了发出一个request请求，而requests.get()表示返回一个response对象</span><br><span class="line"></span><br><span class="line">2）结构</span><br><span class="line">    requests.request(<span class="string">'GET'</span>,url, **kvw)</span><br><span class="line">    requests.request(<span class="string">'HEAD'</span>,url, **kvw)</span><br><span class="line">    requests.request(<span class="string">'POST'</span>,url, **kvw)</span><br><span class="line">    requests.request(<span class="string">'PUT'</span>,url, **kvw)</span><br><span class="line">    requests.request(<span class="string">'PATCH'</span>,url, **kvw)</span><br><span class="line">    requests.request(<span class="string">'DELETE'</span>,url, **kvw)</span><br><span class="line">    **kvw:控制访问的参数，为可选项</span><br><span class="line">    params:字典或字节流，作为参数添加到url中（get方法使用）</span><br><span class="line">    data：字典、字节流或文件对象（post方法使用）</span><br><span class="line">    json：JSON格式数据，作为request的内容</span><br><span class="line">    headers：字典，HTTP头信息</span><br><span class="line">    cookies：字典或cookie jar，存在于request的cookie中</span><br><span class="line">    auth：元组，支持HTTP认证</span><br><span class="line">    files：字典类型，传输文件</span><br><span class="line">    timeout：设定超时时间，秒为单位</span><br><span class="line">    stream：True/False，默认为True。获取内容立即下载。</span><br><span class="line">    cert：本地SSL整数路径</span><br><span class="line">    verfiy：True/False，默认为True。认证SSL开关</span><br><span class="line">    allow_redirects：True/False,默认为True，重定向开发</span><br></pre></td></tr></table></figure>
+<h3 id="beautiful-soup库"><a href="#beautiful-soup库" class="headerlink" title="beautiful soup库"></a>beautiful soup库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">1、常用格式</span><br><span class="line">    from bs4 import BeautifulSoup</span><br><span class="line">    soup = BeautifulSoup(content, <span class="string">'html.parser'</span>)</span><br><span class="line">    参数说明：</span><br><span class="line">    content：使用requests或其他方式，发出请求后获取到的服务器响应内容，通常应该为HTML格式。</span><br><span class="line">    html.parser:HTML4格式解析器</span><br><span class="line"></span><br><span class="line">2、常用的属性</span><br><span class="line">    标签自身属性：</span><br><span class="line">    tag：标签，例如soup.tag可以将指定的标签以及内部的内容返回</span><br><span class="line">    name：标签名，例如：soup.tag.name返回指定标签的名字</span><br><span class="line">    attrs：标签属性，在HTML中一个标签可以有0到N个标签，因此标签属性为字典类型，例如：soup.tag.attrs[<span class="string">'class'</span>]</span><br><span class="line">    string：标签内的文本内容，例如：soup.tag.string</span><br><span class="line">    标签树的属性：</span><br><span class="line">    contents:例如：soup.tag.contents,将指定的标签名内所有的标签都以列表形式返回。</span><br><span class="line">    children：例如：soup.tag.children，将指定的标签中所有的子标签内容，都以迭代器形式返回，进行遍历查询。</span><br><span class="line">    descendants：例如：soup.tag.descendants,将指定的标签中所有的子标签、孙标签都以迭代器形式返回，进行遍历查询。</span><br><span class="line">    注意：BeautifulSoup对象，作为标签树的根节点，即HTML节点</span><br><span class="line"></span><br><span class="line">3、常用方法</span><br><span class="line">    1）函数格式：soup.find(name,attrs)</span><br><span class="line">    参数说明：</span><br><span class="line">    name：标签名</span><br><span class="line">    attrs：标签中的属性值（属性=‘值’）</span><br><span class="line">    返回值：返回查找到第一个符合条件的标签以及内部元素</span><br><span class="line"></span><br><span class="line">    2）函数格式：soup.find_all(name,attrs)</span><br><span class="line">    函数参数与上面find()相同</span><br><span class="line">    返回值：返回符合条件的所有的标签，以列表形式返回。</span><br><span class="line"></span><br><span class="line">4、bs4的遍历模式</span><br><span class="line">    在BeautifulSoup中，有三种遍历模式：</span><br><span class="line">    1）下行遍历</span><br><span class="line">    children、descendants、contents</span><br><span class="line">    find()、find_all()</span><br><span class="line">    2）上行遍历</span><br><span class="line">    parent、parents</span><br><span class="line">    find_parent()、find_parents()</span><br><span class="line">    3）平行遍历</span><br><span class="line">    next_sibling、next_siblings</span><br><span class="line">    previous_sibling、previous_siblings</span><br><span class="line">    find_next_sibling()、find_next_siblings()</span><br><span class="line">    find_previous_siblings()、find_previous_sibling()</span><br></pre></td></tr></table></figure>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">1、正则表达式的概念</span><br><span class="line">    正则表达式就是使用一些特定的表达式，来表示符合其规范的字符串。</span><br><span class="line"></span><br><span class="line">2、常用操作符</span><br><span class="line">    ^:^ab,代表着必须是ab开头，[^ab]代表不能是a或b开头</span><br><span class="line">    $:表示字符串结尾，放在正则表达式的结尾</span><br><span class="line">    []：代表了值域的范围，例如：[0-9][a-z]</span><br><span class="line">    &#123;&#125;：代表了字符出现的次数,例如：&#123;n&#125;代表了出现n次，&#123;n,m&#125;代表出现了n到m次</span><br><span class="line">    *:代表了字符出现0-n次</span><br><span class="line">    +：代表了字符出现1-n次</span><br><span class="line">    ？：代表了字符出现0-1次</span><br><span class="line"></span><br><span class="line">3、常用方法</span><br><span class="line">    1）search()：会在指定的字符串中查找，是否有匹配正则表达式的内容</span><br><span class="line">    函数格式：search(pattern, str)</span><br><span class="line">    参数说明：</span><br><span class="line">    pattern：正则表达式</span><br><span class="line">    str：字符串</span><br><span class="line">    返回值：match对象，可以通过match.group(0)返回匹配正则表达式的内容</span><br><span class="line">    2）match():会从字符串的开始进行匹配</span><br><span class="line">    函数格式：match(pattern, str) </span><br><span class="line">    返回值：match对象</span><br><span class="line">    3）findall():会从指定的字符串中，匹配所有满足正则表达式的内容</span><br><span class="line">    函数格式：findall(pattern,str)</span><br><span class="line">    返回值：返回所有匹配的内容，以列表形式。</span><br><span class="line">    4）split():根据字符串匹配正则表达式的情况来切分</span><br><span class="line">    函数格式：split(pattern, str, maxsplit)</span><br><span class="line">    maxsplit：最大切分次数，剩余部分将作为一个整体输出</span><br><span class="line">    返回值：将切分后的字符串，以列表形式返回</span><br><span class="line">    5）finditer():根据字符串匹配正则表达式，返回一个迭代对象，其中的每一个对象都是match对象</span><br><span class="line">    函数格式：finditer(pattern,str)</span><br><span class="line">    返回值：返回迭代对象，其中每个对象都是match类型</span><br><span class="line"></span><br><span class="line">    6）sub():根据正则表达式，将指定的字符串内容替换</span><br><span class="line">    函数格式：sub(pattern, repl, string, count)</span><br><span class="line">    参数说明：</span><br><span class="line">    repl：替换匹配字符串的字符串</span><br><span class="line">    count：匹配的最大次数</span><br><span class="line">    返回值：返回替换后的字符串</span><br><span class="line">    7）compile():生成正则表达式对象</span><br><span class="line">    函数格式：compile(pattern)</span><br><span class="line">    返回值：返回一个正则表达式对象</span><br><span class="line"></span><br><span class="line">4、match对象</span><br><span class="line">    1）match对象属性</span><br><span class="line">    string：待匹配的字符串</span><br><span class="line">    pos：匹配文本的开始位置</span><br><span class="line">    endpos：匹配文件的结束位置</span><br><span class="line">    re：正则表达式</span><br><span class="line">    2）match方法</span><br><span class="line">    group(0)：获得匹配后的字符串</span><br><span class="line">    start()：返回文本开始的位置</span><br><span class="line">    end()：返回文本结束的位置</span><br><span class="line">    span()：返回文本开始，结束的位置，以元组的形式返回</span><br></pre></td></tr></table></figure>
+<h3 id="MySQL数据库"><a href="#MySQL数据库" class="headerlink" title="MySQL数据库"></a>MySQL数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">分类：</span><br><span class="line">数据库定义语言   DDL（create database/table，drop database/table，alter database/table）</span><br><span class="line">数据库操纵语言   DML(insert、delete、update、select)</span><br><span class="line">数据库控制语言   DCL（grant、revoke）</span><br><span class="line">注意，数据库定义语言和数据库控制语言都是不可撤销的。而数据库操作语言是可以撤销 。</span><br></pre></td></tr></table></figure>
+<h4 id="数据库定义语言"><a href="#数据库定义语言" class="headerlink" title="数据库定义语言"></a>数据库定义语言</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">1）、创建数据库</span><br><span class="line">    create database 数据库名；</span><br><span class="line"></span><br><span class="line">2）、删除数据库</span><br><span class="line">    drop database 数据库名；</span><br><span class="line"></span><br><span class="line">3）、打开数据库</span><br><span class="line">    use 数据库名；</span><br><span class="line"></span><br><span class="line">4）创建数据表</span><br><span class="line">    create table 表名(列名 数据类型(长度),列名 数据类型（长度）,......) default charset=utf8</span><br><span class="line">    注意，如果创建表的时候，没有指定字符集，那么该表将默认采用其所在数据库的字符集。通常我们建议指定缺省的字符集。</span><br><span class="line"></span><br><span class="line">5)、查看数据表的字符集情况</span><br><span class="line">    show variables like <span class="string">'character%'</span>;</span><br><span class="line"></span><br><span class="line">6）查看表结构</span><br><span class="line">    desc 表名</span><br><span class="line"></span><br><span class="line">7）、数据库字段类型</span><br><span class="line">字符类型：</span><br><span class="line">    char(长度)：定长的字符类型，一旦声明了长度，即使定义的字段数据不能达到最大长度，也会按照最大长度进行所占字节的分配。取值范围：0-255</span><br><span class="line">    varchar(长度)： 变长的字符类型，声明长度后，如果字段数据的长度达不到最大长度，则会根据实际长度给出数据的长度。取值范围：0-2^16-1</span><br><span class="line"></span><br><span class="line">数值类型：</span><br><span class="line">    int(长度)：给出指定的字段数据长度。如果没有明确指定长度，则采用默认长度11。所占字节4个字节。</span><br><span class="line"></span><br><span class="line">日期类型：</span><br><span class="line">    date：日期类型的字段，在定义时不需要指定长度。格式为YYYY-MM-DD</span><br><span class="line">    time：日期类型的字段，格式HH:MM:SS</span><br><span class="line">    datatime：日期类型的字段，格式YYYY-MM-DD HH:MM:SS</span><br><span class="line">    布尔型：</span><br><span class="line">    bool:布尔类型的字段，在定义时采用0代表假，1代表真。</span><br><span class="line">    实际在mysql数据库中，bool类型等同于数值型的tinyint(1)</span><br><span class="line"></span><br><span class="line">8)、修改表结构</span><br><span class="line">    alter table 表名 [add/modify/change/drop] 字段名 [数据类型]</span><br><span class="line">    添加字段,位于表中的最后一列：</span><br><span class="line">    alter table tablename add 字段名 数据类型；</span><br><span class="line">    删除一列，如果列中有数据，则全部被删除且不可恢复:</span><br><span class="line">    alter table tablename drop 字段名</span><br><span class="line">    修改指定字段的数据类型及长度:</span><br><span class="line">    alter talbe tablename modify 字段名 数据类型</span><br><span class="line">    修改指定字段的名字</span><br><span class="line">    alter table tablename change oldcolumn newcolumn 数据类型</span><br><span class="line"></span><br><span class="line">9）、修改表名</span><br><span class="line">    rename table 旧表名 to 新表名</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/%E7%88%AC%E8%99%AB/" rel="tag"># 爬虫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/06/15/Python/" rel="prev" title="Python基础">
+      <i class="fa fa-chevron-left"></i> Python基础
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#网络原理"><span class="nav-number">1.</span> <span class="nav-text">网络原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML网页结构"><span class="nav-number">2.</span> <span class="nav-text">HTML网页结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络爬虫——urllib库"><span class="nav-number">3.</span> <span class="nav-text">网络爬虫——urllib库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requests库"><span class="nav-number">4.</span> <span class="nav-text">requests库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#beautiful-soup库"><span class="nav-number">5.</span> <span class="nav-text">beautiful soup库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">6.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL数据库"><span class="nav-number">7.</span> <span class="nav-text">MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库定义语言"><span class="nav-number">7.1.</span> <span class="nav-text">数据库定义语言</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LCP"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">LCP</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LCP</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
