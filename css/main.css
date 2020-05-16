@@ -1371,6 +1371,7 @@ pre code {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
+  border-radius: 50%;
 }
 .site-author-name {
   color: var(--text-color);
@@ -1398,7 +1399,7 @@ pre code {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #530a75;
+  background: #c70f71;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
