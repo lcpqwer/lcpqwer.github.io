@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-16T02:33:14.125Z</updated>
+  <updated>2020-05-16T09:26:07.148Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,34 +17,59 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MySQL</title>
-    <link href="http://yoursite.com/2020/05/16/MySQL/"/>
-    <id>http://yoursite.com/2020/05/16/MySQL/</id>
-    <published>2020-05-16T01:10:20.000Z</published>
-    <updated>2020-05-16T02:33:14.125Z</updated>
+    <title>微信小程序封装wx.request</title>
+    <link href="http://yoursite.com/2020/02/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <id>http://yoursite.com/2020/02/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</id>
+    <published>2020-02-25T08:42:03.000Z</published>
+    <updated>2020-05-16T09:26:07.148Z</updated>
     
     <summary type="html">
     
-      MySQL基本操作
+      封装wx.request()使代码更简洁
     
     </summary>
     
     
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-      <category term="MySQL" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+      <category term="微信小程序" scheme="http://yoursite.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS随笔</title>
+    <link href="http://yoursite.com/2018/12/16/CSS%E9%9A%8F%E7%AC%94/"/>
+    <id>http://yoursite.com/2018/12/16/CSS%E9%9A%8F%E7%AC%94/</id>
+    <published>2018-12-16T09:14:36.000Z</published>
+    <updated>2020-05-17T00:49:59.527Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;布局&quot;&gt;&lt;a href=&quot;#布局&quot; class=&quot;headerlink&quot; title=&quot;布局&quot;&gt;&lt;/a&gt;布局&lt;/h2&gt;&lt;h3 id=&quot;position布局&quot;&gt;&lt;a href=&quot;#position布局&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
     
   </entry>
   
   <entry>
     <title>Python爬虫</title>
-    <link href="http://yoursite.com/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/"/>
-    <id>http://yoursite.com/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/</id>
-    <published>2020-05-15T08:53:31.000Z</published>
-    <updated>2020-05-16T01:12:42.718Z</updated>
+    <link href="http://yoursite.com/2018/10/10/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2018/10/10/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/</id>
+    <published>2018-10-10T08:53:31.000Z</published>
+    <updated>2020-05-16T09:25:50.262Z</updated>
     
     <summary type="html">
     
@@ -65,11 +90,34 @@
   </entry>
   
   <entry>
+    <title>MySQL</title>
+    <link href="http://yoursite.com/2018/09/16/MySQL/"/>
+    <id>http://yoursite.com/2018/09/16/MySQL/</id>
+    <published>2018-09-16T01:10:20.000Z</published>
+    <updated>2020-05-16T09:24:51.692Z</updated>
+    
+    <summary type="html">
+    
+      MySQL基本操作
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="MySQL" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/MySQL/"/>
+    
+    
+      <category term="MySQL" scheme="http://yoursite.com/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python基础</title>
-    <link href="http://yoursite.com/2018/06/15/Python/"/>
-    <id>http://yoursite.com/2018/06/15/Python/</id>
-    <published>2018-06-15T05:31:32.000Z</published>
-    <updated>2020-05-15T09:57:41.592Z</updated>
+    <link href="http://yoursite.com/2018/07/05/Python/"/>
+    <id>http://yoursite.com/2018/07/05/Python/</id>
+    <published>2018-07-05T05:31:32.000Z</published>
+    <updated>2020-05-16T09:25:31.773Z</updated>
     
     <summary type="html">
     
@@ -82,6 +130,8 @@
     
     
       <category term="Python" scheme="http://yoursite.com/tags/Python/"/>
+    
+      <category term="基础" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   

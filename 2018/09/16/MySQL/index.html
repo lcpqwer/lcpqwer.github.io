@@ -23,17 +23,17 @@
   <meta name="description" content="MySQL基本操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL">
-<meta property="og:url" content="http://yoursite.com/2020/05/16/MySQL/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/09/16/MySQL/index.html">
 <meta property="og:site_name" content="小小迷途程序员">
 <meta property="og:description" content="MySQL基本操作">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-05-16T01:10:20.000Z">
-<meta property="article:modified_time" content="2020-05-16T02:33:14.125Z">
+<meta property="article:published_time" content="2018-09-16T01:10:20.000Z">
+<meta property="article:modified_time" content="2020-05-16T09:24:51.692Z">
 <meta property="article:author" content="LCP">
 <meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/05/16/MySQL/">
+<link rel="canonical" href="http://yoursite.com/2018/09/16/MySQL/">
 
 
 <script id="page-configurations">
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/16/MySQL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/head.jpg">
@@ -216,10 +216,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-05-16 09:10:20 / 修改时间：10:33:14" itemprop="dateCreated datePublished" datetime="2020-05-16T09:10:20+08:00">2020-05-16</time>
+              <time title="创建时间：2018-09-16 09:10:20" itemprop="dateCreated datePublished" datetime="2018-09-16T09:10:20+08:00">2018-09-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-05-16 17:24:51" itemprop="dateModified" datetime="2020-05-16T17:24:51+08:00">2020-05-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -258,6 +264,7 @@
 <h5 id="日期类型："><a href="#日期类型：" class="headerlink" title="日期类型："></a>日期类型：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">date：日期类型的字段，在定义时不需要指定长度。格式为YYYY-MM-DD</span><br><span class="line">time：日期类型的字段，格式HH:MM:SS</span><br><span class="line">datatime：日期类型的字段，格式YYYY-MM-DD HH:MM:SS</span><br><span class="line">布尔型：</span><br><span class="line">bool:布尔类型的字段，在定义时采用0代表假，1代表真。</span><br><span class="line">实际在mysql数据库中，bool类型等同于数值型的tinyint(1)</span><br></pre></td></tr></table></figure>
 <h4 id="修改表结构"><a href="#修改表结构" class="headerlink" title="修改表结构"></a>修改表结构</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 [add/modify/change/drop] 字段名 [数据类型]</span><br><span class="line">添加字段,位于表中的最后一列：</span><br><span class="line">alter table tablename add 字段名 数据类型；</span><br><span class="line">删除一列，如果列中有数据，则全部被删除且不可恢复:</span><br><span class="line">alter table tablename drop 字段名</span><br><span class="line">修改指定字段的数据类型及长度:</span><br><span class="line">alter talbe tablename modify 字段名 数据类型</span><br><span class="line">修改指定字段的名字</span><br><span class="line">alter table tablename change oldcolumn newcolumn 数据类型</span><br></pre></td></tr></table></figure>
 <h4 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename table 旧表名 to 新表名</span><br></pre></td></tr></table></figure>
+<h3 id="数据库操纵语言"><a href="#数据库操纵语言" class="headerlink" title="数据库操纵语言"></a>数据库操纵语言</h3><h3 id="数据库控制语言"><a href="#数据库控制语言" class="headerlink" title="数据库控制语言"></a>数据库控制语言</h3>
     </div>
 
     
@@ -294,10 +301,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/05/15/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" rel="prev" title="Python爬虫">
-      <i class="fa fa-chevron-left"></i> Python爬虫
+    <a href="/2018/07/05/Python/" rel="prev" title="Python基础">
+      <i class="fa fa-chevron-left"></i> Python基础
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2018/10/10/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/" rel="next" title="Python爬虫">
+      Python爬虫 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -356,7 +366,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL数据库"><span class="nav-number">1.</span> <span class="nav-text">MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库定义语言"><span class="nav-number">1.1.</span> <span class="nav-text">数据库定义语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-number">1.1.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开数据库"><span class="nav-number">1.1.3.</span> <span class="nav-text">打开数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表"><span class="nav-number">1.1.4.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看数据表的字符集情况"><span class="nav-number">1.1.5.</span> <span class="nav-text">查看数据表的字符集情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表结构"><span class="nav-number">1.1.6.</span> <span class="nav-text">查看表结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库字段类型"><span class="nav-number">1.1.7.</span> <span class="nav-text">数据库字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符类型："><span class="nav-number">1.1.7.1.</span> <span class="nav-text">字符类型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数值类型："><span class="nav-number">1.1.7.2.</span> <span class="nav-text">数值类型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日期类型："><span class="nav-number">1.1.7.3.</span> <span class="nav-text">日期类型：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表结构"><span class="nav-number">1.1.8.</span> <span class="nav-text">修改表结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表名"><span class="nav-number">1.1.9.</span> <span class="nav-text">修改表名</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL数据库"><span class="nav-number">1.</span> <span class="nav-text">MySQL数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库定义语言"><span class="nav-number">1.1.</span> <span class="nav-text">数据库定义语言</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据库"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除数据库"><span class="nav-number">1.1.2.</span> <span class="nav-text">删除数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#打开数据库"><span class="nav-number">1.1.3.</span> <span class="nav-text">打开数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建数据表"><span class="nav-number">1.1.4.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看数据表的字符集情况"><span class="nav-number">1.1.5.</span> <span class="nav-text">查看数据表的字符集情况</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看表结构"><span class="nav-number">1.1.6.</span> <span class="nav-text">查看表结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库字段类型"><span class="nav-number">1.1.7.</span> <span class="nav-text">数据库字段类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#字符类型："><span class="nav-number">1.1.7.1.</span> <span class="nav-text">字符类型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数值类型："><span class="nav-number">1.1.7.2.</span> <span class="nav-text">数值类型：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日期类型："><span class="nav-number">1.1.7.3.</span> <span class="nav-text">日期类型：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表结构"><span class="nav-number">1.1.8.</span> <span class="nav-text">修改表结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表名"><span class="nav-number">1.1.9.</span> <span class="nav-text">修改表名</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库操纵语言"><span class="nav-number">1.2.</span> <span class="nav-text">数据库操纵语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库控制语言"><span class="nav-number">1.3.</span> <span class="nav-text">数据库控制语言</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -372,20 +382,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
