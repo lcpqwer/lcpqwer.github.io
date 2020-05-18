@@ -44,6 +44,21 @@
       </tags>
   </entry>
   <entry>
+    <title>JS正则</title>
+    <url>/2020/05/18/JS%E6%AD%A3%E5%88%99/</url>
+    <content><![CDATA[<h2 id="对象数组使用对象属性排序"><a href="#对象数组使用对象属性排序" class="headerlink" title="对象数组使用对象属性排序"></a>对象数组使用对象属性排序</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 对象数组使用对象属性排序（冒泡）</span><br><span class="line"> * @method compare</span><br><span class="line"> * @param &#123;String&#125; property 对象属性</span><br><span class="line"> *&#x2F;</span><br><span class="line">function compare(property) &#123;</span><br><span class="line">  return function (a, b) &#123;</span><br><span class="line">    var value1 &#x3D; a[property];</span><br><span class="line">    var value2 &#x3D; b[property];</span><br><span class="line">    return value1 - value2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * 使用方法</span><br><span class="line"> * @param &#123;Array&#125; newArray 对象数组</span><br><span class="line"> *&#x2F;</span><br><span class="line">newArray.sort(compare(&quot;value&quot;))</span><br></pre></td></tr></table></figure>
+<h2 id="数组排序（冒泡）"><a href="#数组排序（冒泡）" class="headerlink" title="数组排序（冒泡）"></a>数组排序（冒泡）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function compare(property) &#123;</span><br><span class="line">  return function (a, b) &#123;</span><br><span class="line">    var value1 &#x3D; a[property];</span><br><span class="line">    var value2 &#x3D; b[property];</span><br><span class="line">    return value1 - value2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>随笔</category>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS随笔</title>
     <url>/2020/05/18/CSS%E9%9A%8F%E7%AC%942/</url>
     <content><![CDATA[<p>1、文本超出换行（不用设置高度，只用设置宽度）</p>
@@ -89,6 +104,21 @@
       </tags>
   </entry>
   <entry>
+    <title>微信小程序封装wx.request</title>
+    <url>/2020/02/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+    <content><![CDATA[<p>创建request.js文件，内容如下</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const Ajax = (path, params = &#123;&#125;, method = <span class="string">"GET"</span>) =&gt; &#123;</span><br><span class="line">    const url = path</span><br><span class="line">    const data = params</span><br><span class="line">    // 使用jwt请求头</span><br><span class="line">    const header = &#123;</span><br><span class="line">        Authorization: getApp().globalData.jwt</span><br><span class="line">    &#125;;</span><br><span class="line">    const method = method</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        wx.request(&#123;</span><br><span class="line">            url,</span><br><span class="line">            method,</span><br><span class="line">            data,</span><br><span class="line">            header,</span><br><span class="line">            success: (res) =&gt; &#123;</span><br><span class="line">                resolve(res.data)</span><br><span class="line">            &#125;,</span><br><span class="line">            fail: <span class="keyword">function</span>(res) &#123;</span><br><span class="line">                reject(res)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete: <span class="keyword">function</span>(res) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    Ajax</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在页面js文件中使用</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import Request from <span class="string">'http.js文件路径'</span></span><br><span class="line">Request.Ajax(path, data, method).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">    // 请求成功</span><br><span class="line">&#125;).catch(res =&gt; &#123;</span><br><span class="line">    // 请求失败</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>随笔</category>
+      </categories>
+      <tags>
+        <tag>微信小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python爬虫</title>
     <url>/2018/10/10/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<h3 id="网络原理"><a href="#网络原理" class="headerlink" title="网络原理"></a>网络原理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">1、HTTP与HTTPS的区别</span><br><span class="line">    HTTP：我们称为超文本传输协议，主要用来实现从网络传输超文本到本地浏览器，实现高效且准确的超文本传送。目前HTTP的版本为1.1</span><br><span class="line">    HTTPS：我们认为就是以安全为目标的HTTP通道，即在HTTP协议的基础上加入了SSL层，简称HTTPS。</span><br><span class="line">    SSL的主要作用分为以下两部分：</span><br><span class="line">    第一、为HTTP传输文件提供安全的传输通道</span><br><span class="line">    第二、确认网站的真实性，通过HTTPS访问的网站都需要获取到CA认证。</span><br><span class="line"></span><br><span class="line">2、网络七层模型（了解）</span><br><span class="line">    从下到上的顺序</span><br><span class="line">    物理层</span><br><span class="line">    数据链路层</span><br><span class="line">    网络层</span><br><span class="line">    传输层（TCP、UDP）</span><br><span class="line">    会话层</span><br><span class="line">    表示层</span><br><span class="line">    应用层（HTTP FTP TFTP SMTP SNMP DNS TELNET HTTPS POP3 DHCP）</span><br><span class="line"></span><br><span class="line">3、HTTP的请求机制</span><br><span class="line">    第一，由客户端（浏览器）发出请求</span><br><span class="line">    第二，通过网络传输，到指定的服务器地址</span><br><span class="line">    第三，服务器接收相关请求，并进行解析</span><br><span class="line">    第四，服务器将最终的结果响应回客户端</span><br><span class="line">    第五，客户端接收到服务器响应后，通过浏览器解析，最终将内容进行展现</span><br><span class="line"></span><br><span class="line">4、客户端访问服务器，发出请求，有四部分构成</span><br><span class="line">    第一，请求方法（request method），默认为get方式。只有在表单提交和文件上传时为post方法。</span><br><span class="line">    第二，请求网址（request url），即在浏览器中输入的网路地址。</span><br><span class="line">    第三，请求头（request header），用来标识为一个浏览器正常的访问</span><br><span class="line">    第四，请求体（request body），用来传输到服务器端的相关数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5、请求方法中get与post的区别</span><br><span class="line">    第一、使用get方式提交请求时，相关数据会作为url的参数被一起进行提交，我们可以直接在地址栏中观察到相关数据。而采用post方式请求的url不会包含这些数据，而是直接通过表单提交到服务器。</span><br><span class="line">    第二、get方式提交请求，对于提交的数据大小不能大于1024字节，而post方式提交数据，没有大小的限制。</span><br><span class="line">    总之，如果提交的信息比较敏感或者字节较大时，需要使用post方式；如果只是普通的请求使用get方式。</span><br></pre></td></tr></table></figure>
@@ -107,36 +137,6 @@
       <tags>
         <tag>Python</tag>
         <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS正则</title>
-    <url>/2020/05/18/JS%E6%AD%A3%E5%88%99/</url>
-    <content><![CDATA[<h2 id="对象数组使用对象属性排序"><a href="#对象数组使用对象属性排序" class="headerlink" title="对象数组使用对象属性排序"></a>对象数组使用对象属性排序</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line"> * 对象数组使用对象属性排序（冒泡）</span><br><span class="line"> * @method compare</span><br><span class="line"> * @param &#123;String&#125; property 对象属性</span><br><span class="line"> *&#x2F;</span><br><span class="line">function compare(property) &#123;</span><br><span class="line">  return function (a, b) &#123;</span><br><span class="line">    var value1 &#x3D; a[property];</span><br><span class="line">    var value2 &#x3D; b[property];</span><br><span class="line">    return value1 - value2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * 使用方法</span><br><span class="line"> * @param &#123;Array&#125; newArray 对象数组</span><br><span class="line"> *&#x2F;</span><br><span class="line">newArray.sort(compare(&quot;value&quot;))</span><br></pre></td></tr></table></figure>
-<h2 id="数组排序（冒泡）"><a href="#数组排序（冒泡）" class="headerlink" title="数组排序（冒泡）"></a>数组排序（冒泡）</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function compare(property) &#123;</span><br><span class="line">  return function (a, b) &#123;</span><br><span class="line">    var value1 &#x3D; a[property];</span><br><span class="line">    var value2 &#x3D; b[property];</span><br><span class="line">    return value1 - value2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>随笔</category>
-        <category>JS</category>
-      </categories>
-      <tags>
-        <tag>JS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微信小程序封装wx.request</title>
-    <url>/2020/02/25/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
-    <content><![CDATA[<p>创建request.js文件，内容如下</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">const Ajax = (path, params = &#123;&#125;, method = <span class="string">"GET"</span>) =&gt; &#123;</span><br><span class="line">    const url = path</span><br><span class="line">    const data = params</span><br><span class="line">    // 使用jwt请求头</span><br><span class="line">    const header = &#123;</span><br><span class="line">        Authorization: getApp().globalData.jwt</span><br><span class="line">    &#125;;</span><br><span class="line">    const method = method</span><br><span class="line">    <span class="built_in">return</span> new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">        wx.request(&#123;</span><br><span class="line">            url,</span><br><span class="line">            method,</span><br><span class="line">            data,</span><br><span class="line">            header,</span><br><span class="line">            success: (res) =&gt; &#123;</span><br><span class="line">                resolve(res.data)</span><br><span class="line">            &#125;,</span><br><span class="line">            fail: <span class="keyword">function</span>(res) &#123;</span><br><span class="line">                reject(res)</span><br><span class="line">            &#125;,</span><br><span class="line">            complete: <span class="keyword">function</span>(res) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    Ajax</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在页面js文件中使用</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">import Request from <span class="string">'http.js文件路径'</span></span><br><span class="line">Request.Ajax(path, data, method).<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">    // 请求成功</span><br><span class="line">&#125;).catch(res =&gt; &#123;</span><br><span class="line">    // 请求失败</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>随笔</category>
-      </categories>
-      <tags>
-        <tag>微信小程序</tag>
       </tags>
   </entry>
   <entry>
