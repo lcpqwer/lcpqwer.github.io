@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-18T08:05:17.022Z</updated>
+  <updated>2020-05-18T08:11:58.954Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,27 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CSS随笔</title>
-    <link href="http://yoursite.com/2020/05/18/CSS%E9%9A%8F%E7%AC%942/"/>
-    <id>http://yoursite.com/2020/05/18/CSS%E9%9A%8F%E7%AC%942/</id>
-    <published>2020-05-18T01:43:07.000Z</published>
-    <updated>2020-05-18T08:05:17.022Z</updated>
+    <title>JS正则</title>
+    <link href="http://yoursite.com/2020/05/18/JS%E6%AD%A3%E5%88%99/"/>
+    <id>http://yoursite.com/2020/05/18/JS%E6%AD%A3%E5%88%99/</id>
+    <published>2020-05-18T08:08:19.000Z</published>
+    <updated>2020-05-18T08:11:58.954Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;1、文本超出换行（不用设置高度，只用设置宽度）&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span
-        
-      
+      JS常用的正则判断
     
     </summary>
     
     
       <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/JS/"/>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS随笔</title>
+    <link href="http://yoursite.com/2020/05/18/CSS%E9%9A%8F%E7%AC%942/"/>
+    <id>http://yoursite.com/2020/05/18/CSS%E9%9A%8F%E7%AC%942/</id>
+    <published>2020-05-18T01:43:07.000Z</published>
+    <updated>2020-05-18T08:10:34.127Z</updated>
+    
+    <summary type="html">
+    
+      CSS随笔
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/CSS/"/>
     
     
       <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
@@ -70,7 +88,7 @@
     <link href="http://yoursite.com/2018/12/16/CSS%E9%9A%8F%E7%AC%94/"/>
     <id>http://yoursite.com/2018/12/16/CSS%E9%9A%8F%E7%AC%94/</id>
     <published>2018-12-16T09:14:36.000Z</published>
-    <updated>2020-05-18T01:41:52.141Z</updated>
+    <updated>2020-05-18T08:10:49.895Z</updated>
     
     <summary type="html">
     
@@ -80,6 +98,8 @@
     
     
       <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="CSS" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/CSS/"/>
     
     
       <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
